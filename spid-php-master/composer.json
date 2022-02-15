@@ -1,0 +1,65 @@
+{
+    "config": {
+        "version": "3.10.0",
+	    "platform": {
+		    "php": "7.4.1"
+	    }
+    },
+    "repositories": {
+        "spid-sp-access-button": {
+            "type": "package",
+            "package": {
+                "name": "italia/spid-sp-access-button",
+                "version": "1.0",
+                "source": {
+                    "url": "https://github.com/italia/spid-sp-access-button",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },        
+        "spid-smart-button": {
+            "type": "package",
+            "package": {
+                "name": "italia/spid-smart-button",
+                "version": "1.0",
+                "source": {
+                    "url": "https://github.com/damikael/spid-smart-button",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    },
+    "require": {
+        "simplesamlphp/simplesamlphp": "1.19.0",
+        "italia/spid-smart-button": "*",
+        "italia/spid-sp-access-button": "*",
+        "symfony/filesystem": "5.2.6",
+        "web-token/jwt-core": "2.2.11",
+        "web-token/jwt-key-mgmt": "2.2.11",
+        "web-token/jwt-signature": "2.2.11",
+        "web-token/jwt-encryption": "2.2.11",
+        "web-token/jwt-signature-algorithm-rsa": "2.2.11",
+        "web-token/jwt-signature-algorithm-hmac": "2.2.11",
+        "web-token/jwt-encryption-algorithm-aeskw": "2.2.11",
+        "web-token/jwt-encryption-algorithm-aescbc": "2.2.11"
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "SPID_PHP\\Setup::setup"
+        ],
+        "update-metadata": [
+            "SPID_PHP\\Setup::updateMetadata"
+        ],
+        "uninstall": [
+            "SPID_PHP\\Setup::remove"
+        ]
+    },
+    "scripts-descriptions": {
+        "uninstall": "Remove all packages and custom configurations"
+    },    
+    "autoload": {
+        "classmap": ["setup/"]
+    }         
+}
